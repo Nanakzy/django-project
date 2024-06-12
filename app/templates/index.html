@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Companion</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Health Companion</h1>
+    </header>
+    <main>
+        <h2>User List</h2>
+        <ul id="user-list"></ul>
+        <a href="{% url 'add_user' %}">Add User</a>
+    </main>
+    <footer>
+        <p>Health Companion © 2024</p>
+    </footer>
+    <script>
+        fetch('/get_users/')
+        .then(response => response.json())
+        .then(data => {
+            const userList = document.getElementById('user-list');
+            data.forEach(user => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${user.username} (${user.email})`;
+                userList.appendChild(listItem);
+            });
+        });
+    </script>
+</body>
+</html>

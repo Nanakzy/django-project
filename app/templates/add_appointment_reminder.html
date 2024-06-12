@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Appointment Reminder</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Add a New Appointment Reminder</h1>
+    </header>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="user_id">User ID:</label>
+            <input type="text" id="user_id" name="user_id" required>
+            <label for="appointment_date">Appointment Date:</label>
+            <input type="datetime-local" id="appointment_date" name="appointment_date" required>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description">
+            <label for="reminder_time">Reminder Time:</label>
+            <input type="datetime-local" id="reminder_time" name="reminder_time" required>
+            <button type="submit">Add Reminder</button>
+        </form>
+    </main>
+    <footer>
+        <p>Health Companion © 2024</p>
+    </footer>
+</body>
+</html>
